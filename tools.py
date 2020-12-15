@@ -5,8 +5,10 @@ import numpy as np
 
 def load_elements(json_file):
     # load file and extract massive of elements with its features
-    # example [['H', 'Hydrogen', 1, 1],['He', 'Helium', 2, 4]]
-    pass
+    # example { "H": { "name": "Hydrogen", "number": 1, "atomic_mass": 1}, ...}
+    with open(json_file, 'r') as f:
+        data = json.load(f)
+    return data
 
 
 def find_bb_in_name(name):
