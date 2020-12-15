@@ -24,7 +24,15 @@ def find_bb_in_name(name):
     return sorted(element_entries)
 
 
-def choose_best(vars_dict):
-    # choosing the best looking element and it`s position
-    # return a tuple, example ('Ti', 0)
-    pass
+def choose_best(vars_list):
+    # choosing the best looking element and its position
+    # return a list, example [0, 'Ti']
+    if len(vars_list) == 0:
+        print('Empty_list')
+        break
+    else:
+        if vars_list[0][0] == vars_list[1][0]:
+            output = vars_list[1]
+        else:
+            output = vars_list[0]
+    return output
