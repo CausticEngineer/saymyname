@@ -1,6 +1,6 @@
 import json
-import cv2
-import numpy as np
+#import cv2
+#import numpy as np
 
 
 def load_elements(json_file):
@@ -29,10 +29,21 @@ def choose_best(vars_list):
     # return a list, example [0, 'Ti']
     if len(vars_list) == 0:
         print('Empty_list')
-        break
+        pass
     else:
         if vars_list[0][0] == vars_list[1][0]:
             output = vars_list[1]
         else:
             output = vars_list[0]
     return output
+
+
+def say_my_name(full_name):
+    # breakingbadify a given name
+    output = ''
+    names = full_name.split()
+    for name in names:        
+        finded_elements = find_bb_in_name(name)
+        best_element = choose_best(finded_elements)
+        print(' '.join([name[:best_element[0]], best_element[1], name[best_element[0]+len(best_element[1]):]]))
+        print(best_element)
