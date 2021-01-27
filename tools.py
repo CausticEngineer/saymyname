@@ -1,5 +1,5 @@
 import json
-#import cv2
+import cv2
 #import numpy as np
 
 
@@ -41,14 +41,24 @@ def choose_best(vars_list):
 
 def say_my_name(full_name):
     # breakingbadify a given name
-    output = ''
+    output = []
     names = full_name.split()
     for name in names:        
         finded_elements = find_bb_in_name(name)
         best_element = choose_best(finded_elements)
+        output.append((best_element))
         print(' '.join([name[:best_element[0]], best_element[1], name[best_element[0]+len(best_element[1]):]]))
         print(best_element)
+    return output
 
 
-def draw_chemical_element(element, size):
+def make_picture(background, full_name):
+    elements_with_position = say_my_name(full_name)
+    img = cv2.imread(background)
+    size = img.shape/10
+    draw_chemical_element(img, elements_with_position[0][1], size)
+    draw_chemical_element(img, elements_with_position[1][1], size)
+    cv2.imwrite(f'{full_name}_{background}.jpg', img)
+
+def draw_chemical_element(img, element, size):
     pass
