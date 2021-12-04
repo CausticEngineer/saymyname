@@ -60,5 +60,6 @@ def make_picture(background, full_name):
     draw_chemical_element(img, elements_with_position[1][1], size)
     cv2.imwrite(f'{full_name}_{background}.jpg', img)
 
+
 def draw_chemical_element(img, element, size):
     pass
